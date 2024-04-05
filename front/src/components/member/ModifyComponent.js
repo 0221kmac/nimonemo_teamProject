@@ -30,8 +30,6 @@ const ModifyComponent = ({ setIsModify }) => {
 
   const { moveToPath } = useCustomLogin();
 
-
-
   const [errors, setErrors] = useState({});
 
   const { doLogout } = useCustomLogin();
@@ -101,54 +99,40 @@ const ModifyComponent = ({ setIsModify }) => {
     setMember({ ...loginInfo });
   }, []);
 
+  // 이름 길이 확인
   useEffect(() => {
-    if (member.nickname.length < 2 || member.nickname.length > 16) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        valid_nickname: "닉네임은 2자 이상 16자 이하로 입력해주세요.",
-      }));
-    } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        valid_nickname: "",
-      }));
+    if (member.name !== "") {
+      if (member.name.length < 2 || member.name.length > 16) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          valid_name: "이름은 2자 이상 16자 이하로 입력해주세요.",
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          valid_name: "",
+        }));
+      }
     }
+  }, [member.name]);
 
-    // 이름 길이 확인
-    if (member.name.length < 2 || member.name.length > 16) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        valid_name: "이름은 2자 이상 16자 이하로 입력해주세요.",
-      }));
-    } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        valid_name: "",
-      }));
-    }
-
-    // 전화번호 확인
+  // 전화번호 확인
+  useEffect(() => {
     const phoneNumberPattern = /^\d+$/;
-    if (!phoneNumberPattern.test(member.number)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        valid_number: "휴대폰 번호는 숫자로만 입력해주세요.",
-      }));
-    } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        valid_number: "",
-      }));
+    if (member.number !== "") {
+      if (member.number !== "" && !phoneNumberPattern.test(member.number)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          valid_number: "휴대폰 번호는 숫자로만 입력해주세요.",
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          valid_number: "",
+        }));
+      }
     }
-
-    // 전화번호 미입력 확인
-    if (!member.number) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        valid_number: "휴대폰 번호를 입력해주세요.",
-      }));
-    }
-  }, [member]);
+  }, [member.number]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -162,7 +146,6 @@ const ModifyComponent = ({ setIsModify }) => {
     setIsModify(false);
   };
 
-
   //비밀번호 변경 모달 부분
   const [isOpen, setIsOpen] = useState(false); // 모달이 열려 있는지 여부를 나타내는 상태
   // 모달을 열기 위한 함수
@@ -174,6 +157,36 @@ const ModifyComponent = ({ setIsModify }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  // 닉네임,이메일 실시간 중복 체크 부분
+  useEffect(() => {
+    const check = async () => {
+      if (member.nickname !== "" && member.nickname !== loginInfo.nickname) {
+        // 닉네임이 사용 가능한 경우에만 길이 확인을 수행합니다.
+        const nicknameAvailable = await checkNickname(member.nickname);
+        if (!nicknameAvailable) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            valid_nickname: "이미 사용 중인 닉네임입니다.",
+          }));
+        } else {
+          if (member.nickname.length < 2 || member.nickname.length > 16) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              valid_nickname: "닉네임은 2자 이상 16자 이하로 입력해주세요.",
+            }));
+          } else {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              valid_nickname: "",
+            }));
+          }
+        }
+      }
+    };
+
+    check();
+  }, [member.nickname]);
 
   return (
     <div className="">
@@ -196,8 +209,10 @@ const ModifyComponent = ({ setIsModify }) => {
       )}
       {/* 입력폼 부분 */}
       <div className="justify-center items-center bg-gray-100">
-        <form
-          onSubmit={handleSubmit}
+        <div
+          onSubmit={(e) => {
+            e.preventDefault(); // 폼의 기본 동작 중지
+          }}
           className="w-full p-8 bg-white rounded-lg shadow-xl"
         >
           {/* 이메일 입력 필드 */}
@@ -319,7 +334,7 @@ const ModifyComponent = ({ setIsModify }) => {
 
           <button
             className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-md transition duration-200"
-            type="submit"
+            onClick={handleSubmit}
           >
             정보 수정 완료
           </button>
@@ -329,7 +344,7 @@ const ModifyComponent = ({ setIsModify }) => {
           >
             취소
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );
