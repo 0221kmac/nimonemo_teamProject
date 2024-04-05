@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.back.repository.ProductRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-27T03:41:04" hostname="J-3.local" time="0.762">
+  <properties/>
+  <testcase name="testSearch()" classname="com.back.repository.ProductRepositoryTests" time="0.762"/>
+  <system-out><![CDATA[12:40:57.865 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.back.repository.ProductRepositoryTests]: ProductRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:40:58.001 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.back.BackApplication for test class com.back.repository.ProductRepositoryTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.3)
+
+2024-03-27T12:40:58.455+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : Starting ProductRepositoryTests using Java 17.0.10 with PID 4809 (started by jo in /Users/jo/Desktop/EZEN/Original_Project/0324-back)
+2024-03-27T12:40:58.457+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : No active profile set, falling back to 1 default profile: "default"
+2024-03-27T12:40:59.284+09:00  INFO 4809 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-27T12:40:59.374+09:00  INFO 4809 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 7 JPA repository interfaces.
+2024-03-27T12:40:59.957+09:00  INFO 4809 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-27T12:41:00.013+09:00  INFO 4809 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-27T12:41:00.055+09:00  INFO 4809 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-27T12:41:00.288+09:00  INFO 4809 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-27T12:41:00.319+09:00  INFO 4809 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-27T12:41:00.474+09:00  INFO 4809 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7aa3857b
+2024-03-27T12:41:00.475+09:00  INFO 4809 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-27T12:41:01.634+09:00  INFO 4809 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-27T12:41:01.749+09:00  INFO 4809 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-27T12:41:02.022+09:00  INFO 4809 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-27T12:41:02.970+09:00  INFO 4809 --- [    Test worker] com.back.util.CustomFileUtil             : -------------------------------------
+2024-03-27T12:41:02.970+09:00  INFO 4809 --- [    Test worker] com.back.util.CustomFileUtil             : /Users/jo/upload
+2024-03-27T12:41:03.170+09:00  WARN 4809 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-27T12:41:03.281+09:00  INFO 4809 --- [    Test worker] com.back.config.CustomSecurityConfig     : ---------------------security config---------------------------
+2024-03-27T12:41:03.336+09:00  INFO 4809 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5e22ac65, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7cd91400, org.springframework.security.web.context.SecurityContextHolderFilter@5ef53e42, org.springframework.security.web.header.HeaderWriterFilter@58bf45ca, org.springframework.web.filter.CorsFilter@108817cc, org.springframework.security.web.authentication.logout.LogoutFilter@d866565, com.back.security.filter.JWTCheckFilter@54398386, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5cef76a2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@335d6f94, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@a3a54d6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f334ce0, org.springframework.security.web.session.SessionManagementFilter@3405202c, org.springframework.security.web.access.ExceptionTranslationFilter@49342fb7]
+2024-03-27T12:41:04.038+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : Started ProductRepositoryTests in 5.831 seconds (process running for 7.119)
+Hibernate: 
+    select
+        p1_0.pno,
+        p1_0.artist,
+        p1_0.del_flag,
+        p1_0.pdesc,
+        p1_0.pname,
+        p1_0.price,
+        il1_0.file_name,
+        il1_0.ord 
+    from
+        product p1_0 
+    left join
+        product_image_list il1_0 
+            on p1_0.pno=il1_0.product_pno 
+    where
+        (
+            p1_0.artist like ? escape '' 
+            or ? is null
+        ) 
+        and (
+            p1_0.pname like ? escape '' 
+            or ? is null
+        ) 
+    order by
+        p1_0.pno desc 
+    limit
+        ?, ?
+Hibernate: 
+    select
+        count(p1_0.pno) 
+    from
+        product p1_0 
+    left join
+        product_image_list il1_0 
+            on p1_0.pno=il1_0.product_pno 
+    where
+        (
+            p1_0.artist like ? escape '' 
+            or ? is null
+        ) 
+        and (
+            p1_0.pname like ? escape '' 
+            or ? is null
+        )
+2024-03-27T12:41:04.802+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=35, pname=상품49, artist=성춘향, price=49000, pdesc=상품설명 49, delFlag=false), ProductImage(fileName=IMG_1.jpg, ord=0)]
+2024-03-27T12:41:04.802+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=35, pname=상품49, artist=성춘향, price=49000, pdesc=상품설명 49, delFlag=false), ProductImage(fileName=IMG_2.jpg, ord=1)]
+2024-03-27T12:41:04.802+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=34, pname=상품48, artist=성춘향, price=48000, pdesc=상품설명 48, delFlag=false), ProductImage(fileName=IMG_1.jpg, ord=0)]
+2024-03-27T12:41:04.802+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=34, pname=상품48, artist=성춘향, price=48000, pdesc=상품설명 48, delFlag=false), ProductImage(fileName=IMG_2.jpg, ord=1)]
+2024-03-27T12:41:04.802+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=33, pname=상품47, artist=성춘향, price=47000, pdesc=상품설명 47, delFlag=false), ProductImage(fileName=IMG_1.jpg, ord=0)]
+2024-03-27T12:41:04.803+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=33, pname=상품47, artist=성춘향, price=47000, pdesc=상품설명 47, delFlag=false), ProductImage(fileName=IMG_2.jpg, ord=1)]
+2024-03-27T12:41:04.803+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=32, pname=상품46, artist=성춘향, price=46000, pdesc=상품설명 46, delFlag=false), ProductImage(fileName=IMG_1.jpg, ord=0)]
+2024-03-27T12:41:04.803+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=32, pname=상품46, artist=성춘향, price=46000, pdesc=상품설명 46, delFlag=false), ProductImage(fileName=IMG_2.jpg, ord=1)]
+2024-03-27T12:41:04.803+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=31, pname=상품45, artist=성춘향, price=45000, pdesc=상품설명 45, delFlag=false), ProductImage(fileName=IMG_1.jpg, ord=0)]
+2024-03-27T12:41:04.803+09:00  INFO 4809 --- [    Test worker] c.b.repository.ProductRepositoryTests    : [Product(pno=31, pname=상품45, artist=성춘향, price=45000, pdesc=상품설명 45, delFlag=false), ProductImage(fileName=IMG_2.jpg, ord=1)]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
