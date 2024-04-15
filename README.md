@@ -23,6 +23,12 @@
 - Spring data JPA 3.2.4
 - MySQL 8.0.3
 
+- react 18.2.0
+- react-redux 9.1.0
+- reduxjs/toolkit 2.2.1
+- tensorflow-models/mobilenet 2.1.1
+- tailwindcss 3.4.1
+
 <br>
 
 ## 3. 주요 기능
