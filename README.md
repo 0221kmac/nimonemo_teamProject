@@ -50,7 +50,7 @@
 
 ## 4. 개체-관계 모델(ERD)
 
-| ![erd](https://github.com/myj1217/nimonemo/assets/76141799/29cdc16b-aa85-4b72-a3ea-a1bde367a836)
+![erd](https://github.com/myj1217/nimonemo/assets/76141799/29cdc16b-aa85-4b72-a3ea-a1bde367a836)
 
 ## 5. 개발 팀 소개
 
